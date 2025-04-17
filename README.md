@@ -1,6 +1,6 @@
 # 👨‍💼 Brendan Pham
 
-Welcome to my portfolio. This page features a selection of dashboards I’ve developed using Power BI.
+This page features a selection of dashboards I’ve developed using Power BI.
 
 🌐 **Live Portfolio:** [https://brendan-pham.github.io/portfolio](https://brendan-pham.github.io/portfolio)
 
