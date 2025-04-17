@@ -2,6 +2,8 @@
 
 Welcome to my professional portfolio. This site features a selection of dashboards I’ve developed using Power BI, embedded for interactive viewing.
 
+🌐 **Live Portfolio:** [https://brendan-pham.github.io/portfolio](https://brendan-pham.github.io/portfolio)
+
 ---
 
 ## 🛠️ Tools Used
