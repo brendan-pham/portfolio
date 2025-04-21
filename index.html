@@ -1,4 +1,4 @@
-  <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -40,14 +40,6 @@
     p {
       margin-bottom: 1rem;
     }
-    iframe {
-      width: 100%;
-      height: 780px;
-      border: none;
-      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
-      margin-top: 1rem;
-      margin-bottom: 1rem;
-    }
     .resume-link {
       display: inline-block;
       margin-top: 1rem;
@@ -56,6 +48,24 @@
       color: white;
       text-decoration: none;
       border-radius: 4px;
+    }
+    .responsive-iframe-container {
+      position: relative;
+      width: 100%;
+      padding-bottom: 56.25%; /* 16:9 aspect ratio */
+      height: 0;
+      overflow: hidden;
+      margin-top: 1rem;
+      margin-bottom: 1rem;
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+    }
+    .responsive-iframe-container iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
     }
     footer {
       position: fixed;
@@ -94,14 +104,16 @@
         The dashboard showcases a real-world business use case, using representative sample data to demonstrate how insights can support strategic decision-making.
       </p>
     
-      <iframe 
-        title="Client Engagement Dashboard" 
-        src="https://app.powerbi.com/view?r=eyJrIjoiYzIzOTE0NWQtNGY4Yi00MjcyLTg2OTAtODVjMTllZjk3MzUwIiwidCI6ImQxZTgxMTlhLWNkOGItNDE5Ni1hOGZjLTVhOTYyNGUyOTNmZSJ9" 
-        allowfullscreen="true">
-      </iframe>
+      <div class="responsive-iframe-container">
+        <iframe 
+          title="Client Engagement Dashboard" 
+          src="https://app.powerbi.com/view?r=eyJrIjoiYzIzOTE0NWQtNGY4Yi00MjcyLTg2OTAtODVjMTllZjk3MzUwIiwidCI6ImQxZTgxMTlhLWNkOGItNDE5Ni1hOGZjLTVhOTYyNGUyOTNmZSJ9" 
+          allowfullscreen="true">
+        </iframe>
+      </div>
       
       <p><strong>Data:</strong> <a href="https://github.com/brendan-pham/portfolio/blob/main/sample_client_engagement_dataset.xlsx" target="_blank">Download sample dataset (xlsx)</a></p>
-       <details>
+      <details>
         <summary><strong>🛠️ How this dashboard is built</strong></summary>
         <p>
           This dashboard is powered by a delta-based data pipeline. A Python script extracts new data daily via API, appends only the new records to a master dataset stored on a network drive.
@@ -112,17 +124,14 @@
         <p>
           Below is the data architecture that supports this dashboard:
         </p>
-     <div style="text-align: center;">
-        <img 
-         src="https://github.com/brendan-pham/portfolio/raw/main/client%20engagement%20dashboard%20architecture.png" 
-        alt="Client Engagement Dashboard Architecture"
-        style="width: 80%; border: 1px solid #ddd; border-radius: 4px; margin-top: 1rem;"
-        />
-    </div>
-
-
+        <div style="text-align: center;">
+          <img 
+            src="https://github.com/brendan-pham/portfolio/raw/main/client%20engagement%20dashboard%20architecture.png" 
+            alt="Client Engagement Dashboard Architecture"
+            style="width: 80%; border: 1px solid #ddd; border-radius: 4px; margin-top: 1rem;"
+          />
+        </div>
       </details>
-      
     </section>
 
     <section>
@@ -134,14 +143,14 @@
       <p>
         The dashboard replicates a real business solution using representative sample data for demonstration purposes.
       </p>
-      
-      <iframe 
-        title="Power BI Usage Dashboard" 
-        src="https://app.powerbi.com/view?r=eyJrIjoiMWNhNWQ3ZDAtYWQ4NS00N2ViLTg3NWEtNmZiZTAwODNjYzlhIiwidCI6ImQxZTgxMTlhLWNkOGItNDE5Ni1hOGZjLTVhOTYyNGUyOTNmZSJ9" 
-        allowfullscreen="true">
-      </iframe>
+      <div class="responsive-iframe-container">
+        <iframe 
+          title="Power BI Usage Dashboard" 
+          src="https://app.powerbi.com/view?r=eyJrIjoiMWNhNWQ3ZDAtYWQ4NS00N2ViLTg3NWEtNmZiZTAwODNjYzlhIiwidCI6ImQxZTgxMTlhLWNkOGItNDE5Ni1hOGZjLTVhOTYyNGUyOTNmZSJ9" 
+          allowfullscreen="true">
+        </iframe>
+      </div>
       <p><strong>Data:</strong> <a href="https://github.com/brendan-pham/portfolio/blob/main/powerbi_usage_sample.csv" target="_blank">Download sample dataset (csv)</a></p>
-      
     </section>
 
   </main>
