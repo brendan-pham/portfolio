@@ -1,4 +1,4 @@
-# 👨‍💼 Brendan Pham | Power BI Portfolio
+# Brendan Pham | Power BI Portfolio
 
 This page features a selection of dashboards I’ve developed using Power BI.
 
