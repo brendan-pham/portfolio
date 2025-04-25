@@ -88,12 +88,15 @@ body {
 .responsive-iframe-container {
   position: relative;
   width: 100%;
-  padding-bottom: 52%; /* Default 16:9 ratio */
+  padding-bottom: 52%; /* Controls height ratio */
   height: 0;
   overflow: hidden;
   margin-top: 1rem;
   margin-bottom: 1rem;
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+  border: 1px solid #ccdbe9; /* Light border like details blocks */
+  border-radius: 6px; /* Matches the summary section styling */
+  background-color: white; /* Optional: helps border pop on light backgrounds */
 }
 
 .responsive-iframe-container iframe {
@@ -107,9 +110,10 @@ body {
 
 @media (max-width: 600px) {
   .responsive-iframe-container {
-    padding-bottom: 72%; /* 20% taller for mobile */
+    padding-bottom: 72%; /* Taller on mobile */
   }
 }
+
 
 
     footer {
