@@ -64,7 +64,7 @@ h1 {
 @media (max-width: 600px) {
   main {
     max-width: 100%;
-    margin: 3rem 0 0 0;  /* Reduced top margin from 4rem → 3rem */
+    margin: .5rem 0 0 0;
     padding: 0;
   }
 
@@ -73,7 +73,11 @@ h1 {
     border-radius: 0;
     padding: 1.5rem 1rem;
     box-shadow: none;
-    margin-bottom: 1rem;  /* Reduce gap between sections */
+    margin-bottom: .5rem;
+  }
+
+  section:last-of-type {
+    margin-bottom: 3rem; /* More space below the last section */
   }
 
   details {
@@ -81,6 +85,7 @@ h1 {
     border-radius: 0;
   }
 }
+
 
  /* media end */
 
