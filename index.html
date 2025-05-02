@@ -206,42 +206,53 @@ h1 {
     }
 
     /* hero banner - remove if required */
-     .hero-banner {
-      position: relative;
-      width: 100%;
-      /* 5:1 aspect ratio: height = 20% of width */
-      padding-bottom: 20%;
-background: url('https://raw.githubusercontent.com/brendan-pham/portfolio/main/top%20banner.png') center/cover no-repeat;
-      margin: 1rem 0; /* spacing above & below */
-      font-family: 'Inter', sans-serif;
-    }
-    .hero-banner .banner-content {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      text-align: center;
-      color: #fff;
-    }
-    .hero-banner .banner-content h2 {
-      margin: 0;
-      font-size: 2.5rem;
-      font-weight: 600;
-    }
-    .hero-banner .banner-content p {
-      margin: 0.5rem 0 0;
-      font-size: 1.125rem;
-      font-weight: 400;
-    }
+.hero-banner {
+  position: relative;
+  width: 100%;
+  padding-bottom: 20%;              /* 5:1 aspect ratio */
+  background: url('https://raw.githubusercontent.com/brendan-pham/portfolio/main/banner.png') center/cover no-repeat;
+  margin: 1rem 0;
+  border-radius: 8px;               /* match your sections */
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);  /* subtle shadow */
+  overflow: hidden;                 /* clip children to rounded corners */
+}
 
-    @media (max-width: 600px) {
-      .hero-banner .banner-content h2 {
-        font-size: 1.8rem;
-      }
-      .hero-banner .banner-content p {
-        font-size: 1rem;
-      }
-    }
+/* keep the rest of your rules the same */
+.hero-banner .banner-content {
+  position: absolute;
+  top: 50%;
+  left: 5%;
+  transform: translateY(-50%);
+  text-align: left;
+  color: #fff;
+  max-width: 40%;
+}
+
+.hero-banner .banner-content h2 {
+  margin: 0;
+  font-size: 2.5rem;
+  font-weight: 600;
+}
+
+.hero-banner .banner-content p {
+  margin: 0.5rem 0 0;
+  font-size: 1.125rem;
+  font-weight: 400;
+}
+
+@media (max-width: 600px) {
+  .hero-banner .banner-content {
+    left: 5%;
+    max-width: 90%;
+  }
+  .hero-banner .banner-content h2 {
+    font-size: 1.8rem;
+  }
+  .hero-banner .banner-content p {
+    font-size: 1rem;
+  }
+}
+
 
 
     
