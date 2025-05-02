@@ -225,12 +225,13 @@ h1 {
     }
 
   /* hero banner - remove if required */
+/* hero banner – remove if required */
 .hero-banner {
   position: relative;
   width: 100%;
   padding-bottom: 15%;              /* 5:1 aspect ratio on desktop */
   background: url('https://raw.githubusercontent.com/brendan-pham/portfolio/main/top%20banner.png') center/cover no-repeat;
-  margin: 0.5rem 0.5rem;                    /* desktop top/bottom margin */
+  margin: 1rem 0;                    /* only top/bottom, no left/right */
   border-radius: 8px;               /* match your sections */
   box-shadow: 0 2px 4px rgba(0,0,0,0.05);
   overflow: hidden;
@@ -239,7 +240,7 @@ h1 {
 .hero-banner .banner-content {
   position: absolute;
   top: 50%;
-  left: 2rem;                       /* align with body content */
+  left: 2rem;                       /* align with main’s 2rem padding */
   transform: translateY(-50%);
   text-align: left;
   color: #fff;
@@ -261,15 +262,14 @@ h1 {
 @media (max-width: 600px) {
   .hero-banner {
     padding-bottom: 25%;            /* taller on mobile */
-    margin: 0;               /* smaller top/bottom margin */
+    margin: 0.5rem 0;               /* smaller top/bottom */
     border: none;
     box-shadow: none;
     border-radius: 0;
-    overflow: hidden;
   }
 
   .hero-banner .banner-content {
-    left: 1rem;                     /* mobile inset */
+    left: 1rem;                     /* match mobile section padding */
     max-width: 90%;
   }
 
@@ -282,7 +282,6 @@ h1 {
     font-size: 1rem;
   }
 }
-
 
     
   </style>
