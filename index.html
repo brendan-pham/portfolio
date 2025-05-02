@@ -230,28 +230,37 @@ h1 {
 
 .hero-banner .banner-content h2 {
   margin: 0;
-  font-size: 2rem;
+  font-size: 1.6rem;
   font-weight: 600;
 }
 
 .hero-banner .banner-content p {
-  margin: 0.5rem 0 0;
+  margin: 0.25rem 0 0;   /* make it tighter under the h2 */
   font-size: 1rem;
   font-weight: 400;
 }
 
 @media (max-width: 600px) {
+  .hero-banner {
+    border: none;           /* optional if you had a border */
+    box-shadow: none;
+    border-radius: 0;       /* remove rounded corners */
+    overflow: hidden;       /* keep overflow clipped if you want */
+  }
+
   .hero-banner .banner-content {
     left: 5%;
     max-width: 90%;
   }
   .hero-banner .banner-content h2 {
-    font-size: 1.8rem;
+    font-size: 1.3rem;
   }
   .hero-banner .banner-content p {
+    margin-top: 0.25rem;
     font-size: 1rem;
   }
 }
+
 
 
 
