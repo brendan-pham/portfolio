@@ -225,17 +225,23 @@ h1 {
     }
 
   /* hero banner - remove if required */
-/* hero banner – remove if required */
 .hero-banner {
   position: relative;
   width: 100%;
-  padding-bottom: 10%;              /* 5:1 aspect ratio on desktop */
-  background: url('https://raw.githubusercontent.com/brendan-pham/portfolio/main/top%20banner.png') center/cover no-repeat;
-  margin: 1rem 0;                    /* only top/bottom, no left/right */
-  border-radius: 8px;               /* match your sections */
+  padding-bottom: 10%;            /* controls container height */
+  background-image: url('https://raw.githubusercontent.com/brendan-pham/portfolio/main/top%20banner.png');
+  background-position: center center;
+  background-repeat: no-repeat;
+
+  /* stretch to fill both width AND height */
+  background-size: 100% 100%;
+
+  margin: 1rem 0;
+  border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0,0,0,0.05);
   overflow: hidden;
 }
+
 
 .hero-banner .banner-content {
   position: absolute;
