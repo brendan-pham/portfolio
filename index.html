@@ -21,13 +21,29 @@
       font-size: 0.9rem; /* ~15px */
     }
 
- header {
-      background-color: #1e293b;
-      color: white;
-      padding: 0.7rem 0.7rem;
-      text-align: center;
-      font-size: .9rem;
-    }
+header {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;  /* centers the flex items */
+  gap: 0.5rem;              /* space between items */
+  background-color: #1e293b;
+  color: white;
+  padding: 0.7rem;          /* shorthand for top/bottom & left/right */
+  font-size: 0.9rem;
+  /* text-align is no longer needed with flexbox */
+}
+
+header h1,
+header .tagline {
+  margin: 0;
+}
+
+header h1::after {
+  content: "|";
+  margin: 0 0.5rem;        /* space around the separator */
+  color: white;            /* ensure it’s visible */
+}
+
 
 main {
   max-width: 1280px;
