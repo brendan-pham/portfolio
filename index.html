@@ -38,10 +38,11 @@ header .tagline {
   margin: 0;
 }
 
+/* use a bullet (•) instead of a pipe */
 header h1::after {
-  content: "|";
-  margin: 0 0.5rem;        /* space around the separator */
-  color: white;            /* ensure it’s visible */
+  content: "\2022";
+  margin: 0 0.5rem;
+  color: white;
 }
 
 
