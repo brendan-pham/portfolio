@@ -205,23 +205,22 @@ h1 {
       opacity: 0.9;
     }
 
-    /* hero banner - remove if required */
+  /* hero banner - remove if required */
 .hero-banner {
   position: relative;
   width: 100%;
-  padding-bottom: 15%;              /* 5:1 aspect ratio */
+  padding-bottom: 15%;              /* 5:1 aspect ratio on desktop */
   background: url('https://raw.githubusercontent.com/brendan-pham/portfolio/main/top%20banner.png') center/cover no-repeat;
-  margin: 1rem 0;
+  margin: 1rem 0;                    /* desktop top/bottom margin */
   border-radius: 8px;               /* match your sections */
-  box-shadow: 0 2px 4px rgba(0,0,0,0.05);  /* subtle shadow */
-  overflow: hidden;                 /* clip children to rounded corners */
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  overflow: hidden;
 }
 
-/* keep the rest of your rules the same */
 .hero-banner .banner-content {
   position: absolute;
   top: 50%;
-  left: 5%;
+  left: 2rem;                       /* align with body content */
   transform: translateY(-50%);
   text-align: left;
   color: #fff;
@@ -230,38 +229,40 @@ h1 {
 
 .hero-banner .banner-content h2 {
   margin: 0;
-  font-size: 1.6rem;
+  font-size: 2rem;
   font-weight: 600;
 }
 
 .hero-banner .banner-content p {
-  margin: 0.25rem 0 0;   /* make it tighter under the h2 */
+  margin: 0.25rem 0 0;              /* tighter under h2 */
   font-size: 1rem;
   font-weight: 400;
 }
 
 @media (max-width: 600px) {
   .hero-banner {
-    border: none;           /* optional if you had a border */
+    padding-bottom: 25%;            /* taller on mobile */
+    margin: 0.5rem 0;               /* smaller top/bottom margin */
+    border: none;
     box-shadow: none;
-    border-radius: 0;       /* remove rounded corners */
-    overflow: hidden;       /* keep overflow clipped if you want */
+    border-radius: 0;
+    overflow: hidden;
   }
 
   .hero-banner .banner-content {
-    left: 5%;
+    left: 1rem;                     /* mobile inset */
     max-width: 90%;
   }
+
   .hero-banner .banner-content h2 {
     font-size: 1.3rem;
   }
+
   .hero-banner .banner-content p {
     margin-top: 0.25rem;
     font-size: 1rem;
   }
 }
-
-
 
 
     
