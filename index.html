@@ -238,20 +238,16 @@ hr {
 
 /* Mobile tweaks */
 @media (max-width: 600px) {
-  /* Split container */
-  .hero-split__top .hero-banner { padding-bottom: 25%; border-radius: 0; }
-  .hero-split__bottom           { padding: 1rem; }
-
-  /* Banner content */
-  .hero-banner .banner-content {
-    left: 1rem; max-width: 90%;
+  .hero-split {
+    margin: 0;           /* remove outer horiz. margin */
+    padding: 0;          /* remove any outer padding */
   }
-  .hero-banner h2 { font-size: 1.3rem; }
-  .hero-banner p  { font-size: 1rem; }
 
-  /* About Me */
-  .about-me h3 { font-size: 1.2rem; }
+  .hero-split__bottom {
+    padding: 1rem 0;     /* 1rem top/bottom, zero left/right */
+  }
 }
+
 
     
   </style>
