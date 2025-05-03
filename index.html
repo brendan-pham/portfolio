@@ -240,40 +240,41 @@ hr {
 
 /* Mobile tweaks */
 @media (max-width: 600px) {
-  /* Outer split container */
+  /* 1) Kill main container padding so nothing indents */
+  main {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  /* 2) Remove default section padding/margins */
+  section {
+    padding-left: 0;
+    padding-right: 0;
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  /* 3) Flush out the split-hero wrapper */
   .hero-split {
-    margin: 0.1rem 0;     /* small vertical gap */
-    padding: 0;           /* no side padding */
-    border: none;
-    box-shadow: none;
-    border-radius: 0;
+    margin: 0;    /* no top/bottom gap, and no side gutters */
+    padding: 0;   /* kill any inner spacing */
   }
 
-  /* Top half (banner) */
-  .hero-split__top .hero-banner {
-    padding-bottom: 25%;  /* taller on mobile */
-    margin: 0;            /* flush to container */
-    border: none;
-    border-radius: 0;
-    background-size: cover;
-  }
-  .hero-split__top .hero-banner .banner-content {
-    left: 1rem;           /* small inset for text */
-    max-width: 90%;
-  }
-  .hero-split__top .hero-banner .banner-content h2 {
-    font-size: 1.3rem;
-  }
-  .hero-split__top .hero-banner .banner-content p {
-    margin-top: 0;
-    font-size: 1rem;
-  }
-
-  /* Bottom half (About Me) */
+  /* 4) Ensure each half is also edge-to-edge */
+  .hero-split__top,
   .hero-split__bottom {
-    padding: 1rem 0;      /* vertical padding only */
+    margin: 0;
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  /* 5) Tweak bottom panel vertical padding only */
+  .hero-split__bottom {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
   }
 }
+
 
     
   </style>
