@@ -151,28 +151,35 @@ hr {
 /* ────────────────────────────────────────────────────────────────────────── */
 /*  Split Hero + About Me                                                 */
 /* ────────────────────────────────────────────────────────────────────────── */
+/* 1) Remove the default section padding from the split container */
 .hero-split {
-  margin: 1rem 0;
+  padding: 0;
+  margin: 1rem 0;           /* keep your vertical spacing */
   border: 1px solid #ddd;
   border-radius: 8px;
   overflow: hidden;
   box-shadow: 0 2px 4px rgba(0,0,0,0.05);
 }
 
-/* Top half: your existing banner, now only top corners rounded */
-.hero-split__top .hero-banner {
-  margin: 0;              /* remove extra spacing */
-  border: none;           /* outer .hero-split handles it */
-  border-radius: 8px 8px 0 0;
-  overflow: hidden;
+/* 2) Ensure the top half (the banner) sits flush */
+.hero-split__top {
+  padding: 0;
 }
 
-/* Bottom half: the About Me panel */
+.hero-split__top .hero-banner {
+  margin: 0;                /* no extra margins */
+  border: none;             /* outer .hero-split draws the border */
+  border-radius: 8px 8px 0 0;
+  background-size: cover;   /* keep aspect & avoid skew */
+}
+
+/* 3) The bottom half can still manage its own white padding */
 .hero-split__bottom {
   background: #fff;
-  padding: 2rem;
+  padding: 2rem;            /* your About-Me padding */
   border-radius: 0 0 8px 8px;
 }
+
 
 /* About Me content */
 .about-me h3 {
