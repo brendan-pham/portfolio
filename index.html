@@ -230,33 +230,16 @@ h1 {
   width: 100%;
   padding-bottom: 15%;            /* controls container height */
   background-image: url('https://raw.githubusercontent.com/brendan-pham/portfolio/main/portfolio%20hero%20section%20banner.png');
- /*background-position: center center; */
+  background-position: center center;
   background-repeat: no-repeat;
 
   /* stretch to fill both width AND height */
-  /* background-size: 100% 100%; */
+  background-size: 100% 100%;
 
   margin: 1rem 0;
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0,0,0,0.05);
   overflow: hidden;
-  background-size: cover;
-  background-position: center;
-}
-
-.hero-banner::before {
-  content: "";
-  position: absolute;
-  inset: 0;                /* top:0; right:0; bottom:0; left:0 */
-  pointer-events: none;    /* clicks pass through */
-  z-index: 1;              /* sits above the image */
-  background:
-    /* fade to white at top/bottom (20% of height) */
-    linear-gradient(to bottom,     #fff 0%, transparent 2%),
-    linear-gradient(to top,       #fff 0%, transparent 2%),
-    /* fade to white at left/right (10% of width) */
-    linear-gradient(to right,     #fff 0%, transparent 1%),
-    linear-gradient(to left,      #fff 0%, transparent 1%);
 }
 
 
@@ -268,7 +251,6 @@ h1 {
   text-align: left;
   color: #fff;
   max-width: 40%;
-  z-index: 2; /* bring text above the fade */
 }
 
 .hero-banner .banner-content h2 {
@@ -306,7 +288,6 @@ h1 {
     font-size: 1rem;
   }
 }
-
     
   </style>
 </head>
