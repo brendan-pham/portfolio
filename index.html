@@ -240,39 +240,50 @@ hr {
 
 /* Mobile tweaks */
 @media (max-width: 600px) {
-  /* 1) Kill main container padding so nothing indents */
+  /* 1) Kill any page-wrapper padding/margins */
+  html, body {
+    margin: 0;
+    padding: 0;
+  }
+
+  /* 2) Make main full-width */
   main {
-    padding-left: 0;
-    padding-right: 0;
+    max-width: 100%;
+    margin: 0;
+    padding: 0;
   }
 
-  /* 2) Remove default section padding/margins */
+  /* 3) Reset all sections */
   section {
-    padding-left: 0;
-    padding-right: 0;
-    margin-left: 0;
-    margin-right: 0;
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+    margin: 0;
+    padding: 0.5rem 1rem 1.5rem;  /* you can tweak these if you like */
+  }
+  section:last-of-type {
+    margin-bottom: 3rem;
   }
 
-  /* Flush out the split‐hero wrapper */
+  /* 4) Flush out the split-hero wrapper entirely */
   .hero-split {
-    margin: 0.1rem 0;     /* small top/bottom gap */
-    padding: 0;           /* remove any inner spacing */
+    margin: 0;
+    padding: 0;
     border: none;
     box-shadow: none;
     border-radius: 0;
   }
 
-  /* Top half = banner */
+  /* 5) Top half (banner) edge-to-edge */
   .hero-split__top .hero-banner {
-    padding-bottom: 25%;  /* taller on mobile */
-    margin: 0;            /* flush to container edges */
+    padding-bottom: 25%;    /* taller aspect on mobile */
+    margin: 0;
     border: none;
     border-radius: 0;
     background-size: cover;
   }
   .hero-split__top .hero-banner .banner-content {
-    left: 1rem;           /* small inset for text */
+    left: 1rem;             /* small inset for readability */
     max-width: 90%;
   }
   .hero-split__top .hero-banner .banner-content h2 {
@@ -283,10 +294,11 @@ hr {
     font-size: 1rem;
   }
 
-  /* Bottom half = About Me */
+  /* 6) Bottom half (About Me) vertical padding only */
   .hero-split__bottom {
-    padding: 1rem 1rem;   /* 1rem top/bottom, 1rem left/right */
+    padding: 1rem 0;        /* 1rem top/bottom, zero left/right */
   }
+}
 
     
   </style>
