@@ -87,7 +87,13 @@ p  { margin-bottom: 1rem; }
 }
 
 /* Skill tags & resume button */
-.skill-tags { margin: 1.5rem 0 1rem; }
+.skill-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;           /* space between tags */
+  margin: 1.5rem 0 1rem; /* top and bottom margins */
+}
+
 .skill-tag {
   display: inline-block;
   background-color: #1e293b;
@@ -95,8 +101,12 @@ p  { margin-bottom: 1rem; }
   padding: 0.3rem 0.8rem;
   border-radius: 999px;
   font-size: 0.8rem;
-  margin: 0 0.4rem 0.4rem 0;
 }
+    
+.skill-tag i {
+  margin-right: 0.4rem;
+}
+
 .resume-link {
   display: inline-block;
   margin-top: 1rem;
@@ -390,15 +400,30 @@ hr {
 
 <summary class="details-summary">Build Overview</summary>
 
-              <div class="skill-tags">
-        <span class="skill-tag">Power BI</span>
-        <span class="skill-tag">DAX</span>
-        <span class="skill-tag">Python</span>
-        <span class="skill-tag">API</span>                
-        <span class="skill-tag">Data Modelling</span>
-        <span class="skill-tag">Data Visualisation</span>
-        <span class="skill-tag">Power Query</span>
-              </div>
+<div class="skill-tags">
+  <span class="skill-tag">
+    <i class="fas fa-chart-bar"></i> Power BI
+  </span>
+  <span class="skill-tag">
+    <i class="fas fa-calculator"></i> DAX
+  </span>
+  <span class="skill-tag">
+    <i class="fab fa-python"></i> Python
+  </span>
+  <span class="skill-tag">
+    <i class="fas fa-plug"></i> API
+  </span>
+  <span class="skill-tag">
+    <i class="fas fa-project-diagram"></i> Data Modelling
+  </span>
+  <span class="skill-tag">
+    <i class="fas fa-chart-pie"></i> Data Visualisation
+  </span>
+  <span class="skill-tag">
+    <i class="fas fa-filter"></i> Power Query
+  </span>
+</div>
+
 
       <p><strong>Sample Data:</strong> <a href="https://github.com/brendan-pham/portfolio/blob/main/sample_client_engagement_dataset.xlsx" target="_blank">Download sample dataset (xlsx)</a></p>
         
@@ -459,13 +484,24 @@ hr {
     
 <summary class="details-summary">Build Overview</summary>
     
-            <div class="skill-tags">
-        <span class="skill-tag">Power BI</span>
-        <span class="skill-tag">DAX</span>
-        <span class="skill-tag">Data Modelling</span>
-        <span class="skill-tag">Data Visualisation</span>
-        <span class="skill-tag">Power Query</span>
-            </div>
+<div class="skill-tags">
+  <span class="skill-tag">
+    <i class="fas fa-chart-bar"></i> Power BI
+  </span>
+  <span class="skill-tag">
+    <i class="fas fa-calculator"></i> DAX
+  </span>
+  <span class="skill-tag">
+    <i class="fas fa-project-diagram"></i> Data Modelling
+  </span>
+  <span class="skill-tag">
+    <i class="fas fa-chart-pie"></i> Data Visualisation
+  </span>
+  <span class="skill-tag">
+    <i class="fas fa-filter"></i> Power Query
+  </span>
+</div>
+
   
       <p><strong>Sample Data:</strong> <a href="https://github.com/brendan-pham/portfolio/blob/main/powerbi_usage_sample.csv" target="_blank">Download sample dataset (csv)</a></p>
   
