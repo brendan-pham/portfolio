@@ -21,6 +21,8 @@ body {
   font-size: 0.9rem;
 }
 
+
+
 /* ────────────────────────────────────────────────────────────────────────── */
 /*  Header / Main / Sections                                              */
 /* ────────────────────────────────────────────────────────────────────────── */
@@ -237,17 +239,43 @@ hr {
 }
 
 /* Mobile tweaks */
+/* Mobile tweaks */
 @media (max-width: 600px) {
-  .hero-split {
-    margin: 0;           /* remove outer horiz. margin */
-    padding: 0;          /* remove any outer padding */
-  }
+  /* Split container */
+  .hero-split__top .hero-banner { padding-bottom: 25%; border-radius: 0; }
+  .hero-split__bottom           { padding: 1rem; }
 
-  .hero-split__bottom {
-    padding: 1rem 0;     /* 1rem top/bottom, zero left/right */
+  /* Banner content */
+  .hero-banner .banner-content {
+    left: 1rem; max-width: 90%;
   }
+  .hero-banner h2 { font-size: 1.3rem; }
+  .hero-banner p  { font-size: 1rem; }
+
+  /* About Me */
+  .about-me h3 { font-size: 1.2rem; }
 }
 
+
+    @media (max-width: 600px) {
+  body,
+  main,
+  section {
+    margin-left: 0;
+    margin-right: 0;
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  /* And your hero-split overrides */
+  .hero-split {
+    margin: 0;
+    padding: 0;
+  }
+  .hero-split__bottom {
+    padding: 1rem 0; /* keep vertical padding only */
+  }
+}
 
     
   </style>
