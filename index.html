@@ -242,18 +242,28 @@ hr {
 @media (max-width: 600px) {
   /* 1) Kill main container padding so nothing indents */
   main {
-    padding-left: 0;
-    padding-right: 0;
+    max-width: 100%;
+    margin: 0;
+    padding: 0;
   }
 
-  /* 2) Remove default section padding/margins */
   section {
-    padding-left: 0;
-    padding-right: 0;
-    margin-left: 0;
-    margin-right: 0;
+    border: none;
+    border-radius: 0;
+    padding: 0.5rem 1rem 1.5rem 1rem; /* top right bottom left */
+    box-shadow: none;
+    margin-bottom: .5rem;
   }
 
+  section:last-of-type {
+    margin-bottom: 3rem; /* More space below the last section */
+  }
+
+  details {
+    border: none;
+    border-radius: 0;
+  }
+}
   /* Flush out the split‐hero wrapper */
   .hero-split {
     margin: 0.1rem 0;     /* small top/bottom gap */
