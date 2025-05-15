@@ -221,6 +221,15 @@ hr {
   font-size: 1em;
 }
 
+    .button {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  background-color: #007bff;
+  color: #fff;
+  border-radius: 4px;
+  text-decoration: none;
+}
+
 
 /* ────────────────────────────────────────────────────────────────────────── */
 /*  Hero Banner (unchanged, just scoped under .hero-split__top)           */
@@ -463,8 +472,18 @@ hr {
   </span>
 </div>
 
-
-      <p><strong>Sample Data:</strong> <a href="https://github.com/brendan-pham/portfolio/blob/main/sample_client_engagement_dataset.xlsx" target="_blank">Download sample dataset (xlsx)</a></p>
+    <!-- button to dl sample data start-->
+<p>
+  <strong>Sample Data:</strong>
+  <a
+    href="https://github.com/brendan-pham/portfolio/blob/main/sample_client_engagement_dataset.xlsx"
+    target="_blank"
+    class="button"
+  >
+    Download sample dataset (xlsx)
+  </a>
+</p>
+    <!-- button to dl sample data end-->
         
         <p>
           This dashboard is powered by a delta-based data pipeline. A Python script extracts new data daily via API, appends only the new records to a master dataset stored on a network drive.
