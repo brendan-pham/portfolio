@@ -84,7 +84,7 @@ p  { margin-bottom: 1rem; }
   color: #1e293b;
 }
 
-/* Skill tags & resume button */
+/* Skill tags & resume button - in each dashboard */
 .skill-tags {
   display: flex;
   flex-wrap: wrap;
@@ -224,7 +224,7 @@ hr {
     .button {
   display: inline-block;
   padding: 0.5rem 1rem;
-  background-color: #007bff;
+  background-color: #1e293b;
   color: #fff;
   border-radius: 4px;
   text-decoration: none;
@@ -322,7 +322,7 @@ hr {
   .hero-split__bottom {
     padding: 1rem 1rem;   /* 1rem top/bottom, 1rem left/right */
   }
-  
+    /* about me section */
 .skills-list {
   list-style: none;
   padding: 0;
@@ -471,18 +471,6 @@ hr {
   </span>
 </div>
 
-    <!-- button to dl sample data start-->
-<p>
-  <strong>Sample Data:</strong>
-  <a
-    href="https://github.com/brendan-pham/portfolio/blob/main/sample_client_engagement_dataset.xlsx"
-    target="_blank"
-    class="button"
-  >
-    Download sample dataset (xlsx)
-  </a>
-</p>
-    <!-- button to dl sample data end-->
         
         <p>
           This dashboard is powered by a delta-based data pipeline. A Python script extracts new data daily via API, appends only the new records to a master dataset stored on a network drive.
@@ -500,7 +488,22 @@ hr {
             style="max-width: 900px; width: 100%; border: 1px solid #f9fafb; border-radius: 4px; margin-top: 1rem;"
           />
         </div>
-        
+
+
+      <!-- button to dl sample data start-->
+<p>
+  <strong>Sample Data:</strong>
+  <a
+    href="https://github.com/brendan-pham/portfolio/blob/main/sample_client_engagement_dataset.xlsx"
+    target="_blank"
+    class="button"
+  >
+    Download sample dataset (xlsx)
+  </a>
+</p>
+    <!-- button to dl sample data end-->
+
+    
       </details>
     </section>
     
