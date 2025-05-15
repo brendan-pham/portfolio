@@ -480,13 +480,51 @@ hr {
             style="max-width: 900px; width: 100%; border: 1px solid #f9fafb; border-radius: 4px; margin-top: 1rem;"
           />
         </div>
-
-
-    
       </details>
+
+      <!-- Data Preparation (full snippet) -->
+<details style="background:#f9fafb;border:1px solid #ddd;border-radius:6px;padding:0.75rem;margin-top:1rem;">
+  <summary class="details-summary">Data Preparation</summary>
+  <div style="margin-top:1rem;padding-left:0;line-height:1.4;">
+    <p style="font-style:italic; margin-bottom:0.5rem;">
+      Note: this is a snippet—not the full data cleanup process.
+    </p>
+
+    <p style="font-weight:bold; margin:0.5rem 0 0.25rem 0;">Problem</p>
+    <p style="margin:0 0 0.75rem 1rem;">
+      The raw <strong>Goals</strong> field contains multiple values per client in one comma-separated string.  
+      This prevents any meaningful aggregation—e.g. you can’t count how many clients set “Retirement Planning” 
+      as a goal or calculate the average number of goals per client.
+    </p>
+
+    <p style="font-weight:bold; margin:0.5rem 0 0.25rem 0;">Objective</p>
+    <ul style="margin:0 0 0.75rem 1rem; padding:0; list-style:disc;">
+      <li>Normalize the data so each record is atomic (one client + one goal)</li>
+      <li>Enable exact counts and penetration rates per goal</li>
+      <li>Support distribution analysis of goals per client</li>
+      <li>Allow easy joins to other tables for cohort or segmentation analysis</li>
+    </ul>
+
+    <p style="font-weight:bold; margin:0.5rem 0 0.25rem 0;">Approach</p>
+    <ul style="margin:0 0 0.75rem 1rem; padding:0; list-style:disc;">
+      <li>Split the <strong>Goals</strong> column by comma into provisional columns (Goals.1…Goals.N)</li>
+      <li>Unpivot those split columns into a tall format (one row per client-goal pair)</li>
+      <li>Clean each goal value by trimming whitespace for consistency</li>
+      <li>Enrich by joining to a goals reference table to replace IDs with descriptive names</li>
+    </ul>
+
+    <p style="font-weight:bold; margin:0.5rem 0 0.25rem 0;">Result</p>
+    <ul style="margin:0 0 0.5rem 1rem; padding:0; list-style:disc;">
+      <li>Transformed a single multi-value field into a fully normalized, tall table</li>
+      <li>Mapped goals back to the main dataset for accurate reporting</li>
+    </ul>
+  </div>
+</details>
+
+      
     </section>
     
-
+      <!-- new dashboard -->
     <section>
       <h2>Power BI Usage Dashboard</h2>
       <p>
