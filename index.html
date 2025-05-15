@@ -565,26 +565,28 @@ hr {
     
     <p style="font-weight:bold; margin:0.5rem 0 0.25rem 0;">Problem</p>
     <p style="margin:0 0 0.75rem 1rem;">
-      Each login appends a new row for the same client, so multiple records exist per client.
+      Each client login appends a new row for the same client (via a delta report), so multiple records exist per client.
     </p>
 
     <p style="font-weight:bold; margin:0.5rem 0 0.25rem 0;">Objective</p>
     <p style="margin:0 0 0.75rem 1rem;">
-      Retain only the most recent record (latest Updated Date) for each client.
+      Retain only the most recent record ('Updated Date' field) for each client.
     </p>
 
     <p style="font-weight:bold; margin:0.5rem 0 0.25rem 0;">Approach</p>
     <ul style="margin:0 0 0.75rem 1rem; padding:0; list-style:disc;">
-      <li>Load CSV and set types</li>
       <li>Add a helper key combining Client ID + Updated Date</li>
       <li>Group by Client ID to find the max Updated Date</li>
-      <li>Create <code>updated date helper</code> by concatenating Client ID + max date</li>
+      <li>
+        Create <code>updated date helper</code> by concatenating Client ID + max date  
+        <em>(required because Power Query’s “Remove Duplicates” uses input order, not date, to decide which row to keep)</em>
+      </li>
       <li>Merge helper back and <strong>filter out duplicates</strong> so only the latest record remains</li>
     </ul>
 
     <p style="font-weight:bold; margin:0.5rem 0 0.25rem 0;">Result</p>
     <p style="margin:0 0 0.5rem 1rem;">
-      A helper table with one row per client showing their latest login date, ready to merge back into the main dataset.
+      The main dataset now contains one record per client, each reflecting their latest update.
     </p>
 
     <pre style="background:#333;color:#fff;border-radius:4px;padding:0.75rem;overflow-x:auto;">
