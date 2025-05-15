@@ -490,7 +490,7 @@ hr {
     <p style="font-style:italic; margin-bottom:0.5rem;">
       Note: this is a snippet—not the full data cleanup process.
     </p>
-
+      <!-- problem 1 goals split -->
     <p style="font-weight:bold; margin:0.5rem 0 0.25rem 0;">Problem</p>
     <p style="margin:0 0 0.75rem 1rem;">
       The raw <strong>Goals</strong> field contains multiple values per client in one comma-separated string.  
@@ -558,6 +558,63 @@ hr {
 )
 </code>
     </pre>
+      <!-- problem 1 goals split end -->
+      <!-- problem 2 delta -->
+    
+    <p style="font-weight:bold; margin:0.5rem 0 0.25rem 0;">Problem</p>
+    <p style="margin:0 0 0.75rem 1rem;">
+      Each login appends a new row for the same client, so the table contains multiple records per client.
+    </p>
+
+    <p style="font-weight:bold; margin:0.5rem 0 0.25rem 0;">Objective</p>
+    <p style="margin:0 0 0.75rem 1rem;">
+      Keep only the most recent record for each client and merge it back into the main table.
+    </p>
+
+    <p style="font-weight:bold; margin:0.5rem 0 0.25rem 0;">Approach</p>
+    <ul style="margin:0 0 0.75rem 1rem; padding:0; list-style:disc;">
+      <li>Load, promote headers, and set types.</li>
+      <li>Create a helper table: add “Max Updated” key and group by client to find each client’s latest date.</li>
+      <li>Merge that helper table back into the full dataset on client + date helper.</li>
+    </ul>
+
+    <p style="font-weight:bold; margin:0.5rem 0 0.25rem 0;">Result</p>
+    <p style="margin:0 0 0.5rem 1rem;">
+      A deduplicated master table where each client appears once—with their latest update—in the main dataset.
+    </p>
+
+    <pre style="background:#333;color:#fff;border-radius:4px;padding:0.75rem;overflow-x:auto;">
+<code>let
+    // 1. Load & prep
+    Source = Csv.Document(File.Contents("<your CSV>"), [Delimiter=",", Columns=28, Encoding=1252]),
+    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers", {/* types config */}),
+
+    // 2. Build helper table
+    #"Added Key" = Table.AddColumn(#"Changed Type", "Max Updated", each [Client] & Text.From([Updated Date])),
+    #"Grouped" = Table.Group(#"Added Key", {"Client"}, {{"LatestDate", each List.Max([Updated Date]), type nullable date}}),
+    #"Keyed" = Table.AddColumn(#"Grouped", "updated date helper", each [Client] & Text.From([LatestDate])),
+    #"Renamed" = Table.RenameColumns(#"Keyed", {{"LatestDate","max updated date"}}),
+
+    // 3. Merge back to main
+    #"Merged Latest" = Table.NestedJoin(
+        #"Changed Type",
+        {"Client","Max Updated"},
+        #"Renamed",
+        {"Client","updated date helper"},
+        "LatestRecord",
+        JoinKind.Inner
+    ),
+    #"Expanded Latest" = Table.ExpandTableColumn(
+        #"Merged Latest",
+        "LatestRecord",
+        Table.ColumnNames(#"Renamed")
+    )
+in
+    #"Expanded Latest"</code>
+    </pre>
+
+          <!-- problem 2 delta end -->
   </div>
 </details>
 
