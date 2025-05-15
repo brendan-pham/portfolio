@@ -586,7 +586,7 @@ hr {
     <pre style="background:#333;color:#fff;border-radius:4px;padding:0.75rem;overflow-x:auto;">
 <code>let
     // 1. Load & prep
-    Source = Csv.Document(File.Contents("<your CSV>"), [Delimiter=",", Columns=28, Encoding=1252]),
+    Source = Csv.Document(File.Contents("<sample_client_engagement_dataset.xlsx>"), [Delimiter=",", Columns=28, Encoding=1252]),
     #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
     #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers", {/* types config */}),
 
