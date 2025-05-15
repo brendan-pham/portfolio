@@ -557,66 +557,76 @@ hr {
     {"Goals"}
 )
 </code>
-    </pre>
+
+          </pre>
+
       <!-- problem 1 goals split end -->
       <!-- problem 2 delta -->
     
     <p style="font-weight:bold; margin:0.5rem 0 0.25rem 0;">Problem</p>
     <p style="margin:0 0 0.75rem 1rem;">
-      Each login appends a new row for the same client (via a delta file), so the table contains multiple records per client.
+      Each login appends a new row for the same client, so multiple records exist per client.
     </p>
 
     <p style="font-weight:bold; margin:0.5rem 0 0.25rem 0;">Objective</p>
     <p style="margin:0 0 0.75rem 1rem;">
-      Keep only the most recent record for each client and merge it back into the main table.
+      Retain only the most recent record (latest Updated Date) for each client.
     </p>
 
     <p style="font-weight:bold; margin:0.5rem 0 0.25rem 0;">Approach</p>
     <ul style="margin:0 0 0.75rem 1rem; padding:0; list-style:disc;">
-      <li>Create a helper table: add “Max Updated” key and group by client to find each client’s latest updated date.</li>
-      <li>Merge that helper table back into the full dataset on 'client + date' helper.</li>
+      <li>Load CSV and set types</li>
+      <li>Add a helper key combining Client ID + Updated Date</li>
+      <li>Group by Client ID to find the max Updated Date</li>
+      <li>Create <code>updated date helper</code> by concatenating Client ID + max date</li>
+      <li>Merge helper back and <strong>filter out duplicates</strong> so only the latest record remains</li>
     </ul>
 
     <p style="font-weight:bold; margin:0.5rem 0 0.25rem 0;">Result</p>
     <p style="margin:0 0 0.5rem 1rem;">
-      A deduplicated master table where each client appears once—with their latest update.
+      A helper table with one row per client showing their latest login date, ready to merge back into the main dataset.
     </p>
 
     <pre style="background:#333;color:#fff;border-radius:4px;padding:0.75rem;overflow-x:auto;">
-<code>
-  <p style="font-weight:bold; margin:0.5rem 0 0.25rem 0;">Key M Code Snippet</p>
-  let
+
+
+      
+<code>let
     // 1. Load & prep
-    Source = Csv.Document(File.Contents("<sample_client_engagement_dataset.xlsx>"), [Delimiter=",", Columns=28, Encoding=1252]),
+    Source = Csv.Document(File.Contents("<your CSV>"), [Delimiter=",", Columns=28, Encoding=1252]),  
     #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
     #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers", {/* types config */}),
 
-    // 2. Build helper table
-    #"Added Key" = Table.AddColumn(#"Changed Type", "Max Updated", each [Client] & Text.From([Updated Date])),
-    #"Grouped" = Table.Group(#"Added Key", {"Client"}, {{"LatestDate", each List.Max([Updated Date]), type nullable date}}),
-    #"Keyed" = Table.AddColumn(#"Grouped", "updated date helper", each [Client] & Text.From([LatestDate])),
-    #"Renamed" = Table.RenameColumns(#"Keyed", {{"LatestDate","max updated date"}}),
-
-    // 3. Merge back to main
-    #"Merged Latest" = Table.NestedJoin(
-        #"Changed Type",
-        {"Client","Max Updated"},
-        #"Renamed",
-        {"Client","updated date helper"},
-        "LatestRecord",
-        JoinKind.Inner
+    // 2. Build & merge helper
+    #"Added Custom" = Table.AddColumn(#"Changed Type", "Max Updated", each [Client] & Text.From([Updated Date])),
+    #"Merged Queries" = Table.NestedJoin(
+        #"Added Custom",
+        {"Max Updated"},
+        #"max updated date",
+        {"updated date helper"},
+        "max updated date",
+        JoinKind.LeftOuter
     ),
-    #"Expanded Latest" = Table.ExpandTableColumn(
-        #"Merged Latest",
-        "LatestRecord",
-        Table.ColumnNames(#"Renamed")
-    )
-in
-    #"Expanded Latest"</code>
-    </pre>
+    #"Expanded max updated date" = Table.ExpandTableColumn(
+        #"Merged Queries",
+        "max updated date",
+        {"max updated date"},
+        {"max updated date.1"}
+    ),
 
-          <!-- problem 2 delta end -->
+    // 3. Filter & dedupe
+    #"Filtered Rows" = Table.SelectRows(#"Expanded max updated date", each [max updated date.1] <> null),
+    #"Removed Columns" = Table.RemoveColumns(#"Filtered Rows", {"Max Updated", "max updated date.1"}),
+    #"Removed Duplicates" = Table.Distinct(#"Removed Columns", {"Client"})
+
+in
+    #"Removed Duplicates"
+    
+    
+    </code>
+    </pre>
   </div>
+          <!-- problem 2 delta end -->
 </details>
 
       
