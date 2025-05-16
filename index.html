@@ -522,10 +522,10 @@ hr {
       <li>Mapped goals back to the main dataset for accurate reporting</li>
     </ul>
       <!-- sample code -->
-<pre style="background:#333;color:#fff;border-radius:4px;padding:0.25rem 0.5rem;overflow-x:auto;">
+<pre style="background:#333;color:#fff;border-radius:4px;padding:0.1rem 0.5rem;overflow-x:auto;">
 
 <code>
-<p style="font-weight:bold; margin:0.5rem 0 0.25rem 0;">Key M Code Snippet</p>
+<p style="font-weight:bold; margin:0.25rem 0 0.25rem 0;">Key M Code Snippet</p>
 // Split Goals into separate columns
 #"Split Column by Delimiter" = Table.SplitColumn(
     Source,
@@ -596,11 +596,10 @@ hr {
     </p>
 
 
-<pre style="background:#333;color:#fff;border-radius:4px;padding:0.25rem 0.5rem;overflow-x:auto;">
+<pre style="background:#333;color:#fff;border-radius:4px;padding:0.1rem 0.5rem;overflow-x:auto;">
 
       
-<code><p style="font-weight:bold; margin:0.5rem 0 0.25rem 0;">Key M Code Snippet</p>
-  
+<code><p style="font-weight:bold; margin:0.25rem 0 0.25rem 0;">Key M Code Snippet</p>
   let
     // 1. Load & prep
     Source = Csv.Document(File.Contents("<your CSV>"), [Delimiter=",", Columns=28, Encoding=1252]),  
@@ -631,8 +630,6 @@ hr {
 
 in
     #"Removed Duplicates"
-    
-    
     </code>
     </pre>
   </div>
