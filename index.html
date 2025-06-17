@@ -449,9 +449,10 @@ hr {
       </div>
 
       <!-- Like Button -->
-<button class="like-button" id="like-client-engagement">
-  👍 Like <span class="like-count" id="like-count-client-engagement">0</span>
+<button class="like-button" data-key="client-engagement">
+  👍 <span class="like-text">Like</span> <span class="like-count">0</span>
 </button>
+
 
       
 <details style="background-color: #f9fafb; border: 1px solid #ddd; border-radius: 6px; padding: 0.75rem; margin-top: 1rem;">
@@ -767,7 +768,7 @@ in
 </footer>
 
       <!-- Like button script-->      
-    <script>
+   <script>
   const firebaseConfig = {
     apiKey: "AIzaSyC25Dcdv_2Gn3uSbaSsAyjzR__pwwwfgRQ",
     authDomain: "dashboard-portfolio-b2fd6.firebaseapp.com",
@@ -783,25 +784,29 @@ in
     firebase.initializeApp(firebaseConfig);
     const db = firebase.database();
 
-    const likeKey = "likes/client-engagement";
-    const countSpan = document.getElementById("like-count-client-engagement");
-    const button = document.getElementById("like-client-engagement");
+    document.querySelectorAll(".like-button").forEach(button => {
+      const key = button.dataset.key;
+      const countSpan = button.querySelector(".like-count");
+      const textSpan = button.querySelector(".like-text");
+      const ref = db.ref("likes/" + key);
 
-    console.log("🔧 Firebase initialized:", firebase.apps.length > 0);
+      // Load current like count
+      ref.on("value", snapshot => {
+        countSpan.textContent = snapshot.val() || 0;
+      });
 
-    db.ref(likeKey).on("value", (snapshot) => {
-      const count = snapshot.val() || 0;
-      countSpan.textContent = count;
-    });
-
-    button.addEventListener("click", () => {
-      db.ref(likeKey).transaction((current) => (current || 0) + 1)
-        .then(() => {
-          console.log("✅ Like recorded");
-        })
-        .catch((error) => {
-          console.error("🔥 Firebase error:", error);
-        });
+      // Click handler
+      button.addEventListener("click", () => {
+        ref.transaction(current => (current || 0) + 1)
+          .then(() => {
+            console.log(`✅ Like recorded for "${key}"`);
+            textSpan.textContent = "Liked";
+            button.disabled = true; // prevent double-clicking
+          })
+          .catch(error => {
+            console.error(`🔥 Error for "${key}":`, error);
+          });
+      });
     });
   };
 </script>
