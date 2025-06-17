@@ -355,8 +355,36 @@ hr {
  .responsive-iframe-container { padding-bottom: 72%; }
   
     }  /* end mobile */
+    
+.like-button {
+  padding: 0.4rem 0.8rem;
+  background-color: #0f766e;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: 500;
+  margin: 0.5rem 0 1rem 0;
+  transition: background-color 0.3s ease;
+}
+
+.like-button:hover {
+  background-color: #0d5d58;
+}
+
+.like-count {
+  margin-left: 0.5rem;
+  font-weight: 600;
+}
 
   </style>
+
+  
+  <!-- Firebase SDK -->
+<script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-database-compat.js"></script>
+
 </head>
 <body>
   <header>
@@ -420,6 +448,12 @@ hr {
         </iframe>
       </div>
 
+      <!-- Like Button -->
+<button class="like-button" id="like-client-engagement">
+  👍 Like <span class="like-count" id="like-count-client-engagement">0</span>
+</button>
+
+      
 <details style="background-color: #f9fafb; border: 1px solid #ddd; border-radius: 6px; padding: 0.75rem; margin-top: 1rem;">
   <summary class="details-summary">Design Features</summary>
 <div style="margin-top: 1rem; padding-left: 0;">
@@ -732,5 +766,37 @@ in
   </a>
 </footer>
 
+      <!-- Like button script-->      
+      <script>
+  const firebaseConfig = {
+    apiKey: "AIzaSyC25Dcdv_2Gn3uSbaSsAyjzR__pwwwfgRQ",
+    authDomain: "dashboard-portfolio-b2fd6.firebaseapp.com",
+    projectId: "dashboard-portfolio-b2fd6",
+    storageBucket: "dashboard-portfolio-b2fd6.firebasestorage.app",
+    messagingSenderId: "713882086672",
+    appId: "1:713882086672:web:16ddfb82ab1870d8dd8995",
+    measurementId: "G-96QZTD6SQQ",
+    databaseURL: "https://dashboard-portfolio-b2fd6-default-rtdb.firebaseio.com"
+  };
+
+  firebase.initializeApp(firebaseConfig);
+  const db = firebase.database();
+
+  // Like button for Client Engagement Dashboard
+  const likeKey = "likes/client-engagement";
+  const countSpan = document.getElementById("like-count-client-engagement");
+  const button = document.getElementById("like-client-engagement");
+
+  db.ref(likeKey).on("value", (snapshot) => {
+    const count = snapshot.val() || 0;
+    countSpan.textContent = count;
+  });
+
+  button.addEventListener("click", () => {
+    db.ref(likeKey).transaction((current) => (current || 0) + 1);
+  });
+</script>
+
+      
 </body>
 </html>
