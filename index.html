@@ -358,12 +358,20 @@ hr {
     
 .like-container {
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
   margin-top: 1rem;
 }
 
+.upload-date {
+  font-size: 0.85rem;
+  color: #6b7280; /* Tailwind slate-500 */
+  margin: 0;
+}
+
 .like-button {
-  background-color: #f3f4f6; /* Light gray */
+  background-color: #f3f4f6;
   border: 1px solid #d1d5db;
   border-radius: 999px;
   padding: 0.4rem 1rem;
@@ -382,6 +390,7 @@ hr {
   cursor: default;
   opacity: 0.7;
 }
+
 
 
   </style>
@@ -454,8 +463,9 @@ hr {
         </iframe>
       </div>
 
-      <!-- Like Button -->
+      <!-- Uploaded date and Like Button -->
 <div class="like-container">
+  <p class="upload-date">🗓️ Uploaded: April 2025</p>
   <button class="like-button" data-key="client-engagement">
     👍 <span class="like-text">Like</span> <span class="like-count">0</span>
   </button>
