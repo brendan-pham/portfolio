@@ -792,9 +792,16 @@ in
     countSpan.textContent = count;
   });
 
-  button.addEventListener("click", () => {
-    db.ref(likeKey).transaction((current) => (current || 0) + 1);
-  });
+button.addEventListener("click", () => {
+  db.ref(likeKey).transaction((current) => (current || 0) + 1)
+    .then(() => {
+      console.log("✅ Like recorded");
+    })
+    .catch((error) => {
+      console.error("🔥 Firebase error:", error);
+    });
+});
+
 </script>
 
       
